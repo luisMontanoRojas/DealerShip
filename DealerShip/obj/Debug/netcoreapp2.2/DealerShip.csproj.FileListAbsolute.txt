@@ -1,0 +1,14 @@
+C:\Users\Luis\Desktop\myDealership\DealerShip\bin\Debug\netcoreapp2.2\DealerShip.deps.json
+C:\Users\Luis\Desktop\myDealership\DealerShip\bin\Debug\netcoreapp2.2\DealerShip.runtimeconfig.json
+C:\Users\Luis\Desktop\myDealership\DealerShip\bin\Debug\netcoreapp2.2\DealerShip.runtimeconfig.dev.json
+C:\Users\Luis\Desktop\myDealership\DealerShip\bin\Debug\netcoreapp2.2\DealerShip.dll
+C:\Users\Luis\Desktop\myDealership\DealerShip\bin\Debug\netcoreapp2.2\DealerShip.pdb
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.csprojAssemblyReference.cache
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.csproj.CoreCompileInputs.cache
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.RazorAssemblyInfo.cache
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.RazorAssemblyInfo.cs
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.AssemblyInfoInputs.cache
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.AssemblyInfo.cs
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.RazorTargetAssemblyInfo.cache
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.dll
+C:\Users\Luis\Desktop\myDealership\DealerShip\obj\Debug\netcoreapp2.2\DealerShip.pdb
