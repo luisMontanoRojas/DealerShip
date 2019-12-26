@@ -13,6 +13,8 @@ namespace DealerShip.Model
         public string name { get; set; }
         [StringLength(20, ErrorMessage = "error {0} There isn't a country name with more than {1} min is {2}", MinimumLength = 2)]
         public string nationality { get; set; }
+        [Required]
+        public string url_logo_image { get; set; }
         public string facebook { get; set; }
         [Required]
         public string ubication { get; set; }

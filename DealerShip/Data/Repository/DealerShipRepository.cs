@@ -144,6 +144,10 @@ namespace DealerShip.Data.Repository
             {
                 brandToUpdate.about = editBrand.about;
             }
+            if (editBrand.url_logo_image != null)
+            {
+                brandToUpdate.about = editBrand.url_logo_image;
+            }
             if (editBrand.facebook != null)
             {
                 brandToUpdate.facebook = editBrand.facebook;
