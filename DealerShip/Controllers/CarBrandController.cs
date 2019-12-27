@@ -56,14 +56,14 @@ namespace DealerShip.Controllers
         }
 
         [HttpPost]
-        public ActionResult<CarBrand> PostCarBrand([FromBody] CarBrand carBrand)
+        public async Task<ActionResult<CarBrand>> PostCarBrand([FromBody] CarBrand carBrand)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var createdCarBrand = carBrandService.CreateCarBrand(carBrand);
+            var createdCarBrand =await  carBrandService.CreateCarBrandAsync(carBrand);
             return Created($"/api/carbrand/{createdCarBrand.id}", createdCarBrand);
         }
 

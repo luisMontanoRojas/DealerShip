@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DealerShip.Data;
 using DealerShip.Data.Repository;
 using DealerShip.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -30,7 +33,18 @@ namespace DealerShip
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<ICarBrandService, CarBrandService>();
             services.AddTransient<ICarModelService, CarModelService>();
-            services.AddSingleton<IDealerShipRepository, DealerShipRepository>();
+            services.AddTransient<IDealerShipRepository, DealerShipRepository>();
+            services.AddEntityFrameworkSqlServer();
+            services.AddDbContext<DealerDBContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("PharmacyDBContext")
+                    )
+            );
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => { options.AllowAnyOrigin(); options.AllowAnyMethod(); options.AllowAnyHeader(); });
+            });
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

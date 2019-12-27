@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DealerShip.Data.Entities;
 using DealerShip.Model;
 
 namespace DealerShip.Data.Repository
@@ -10,8 +11,10 @@ namespace DealerShip.Data.Repository
     {
         private List<CarBrand> carBrands;
         private List<CarModel> carModels;
-        public DealerShipRepository()
+        private DealerDBContext dealerDBContext;
+        public DealerShipRepository(DealerDBContext dealerDBContext)
         {
+            this.dealerDBContext = dealerDBContext;
             carBrands = new List<CarBrand>() {
                 new CarBrand()
                 {
@@ -49,13 +52,12 @@ namespace DealerShip.Data.Repository
             return newModel;
         }
 
-        public CarBrand CreateCarBrand(CarBrand newBrand)
+        public void  CreateCarBrand(CarBrandEntity newBrand)
         {
-            var lastBrand = carBrands.OrderByDescending(b => b.id).FirstOrDefault();
-            var nextID = lastBrand == null ? 1 : lastBrand.id + 1;
-            newBrand.id = nextID;
-            carBrands.Add(newBrand);
-            return newBrand;
+            dealerDBContext.CarBrands.Add(newBrand);
+           
+           
+           
         }
 
         public bool DeleteCarBrand(int id)
@@ -135,6 +137,11 @@ namespace DealerShip.Data.Repository
         {
             var modelToDelete = carModels.Single(b => b.id == id);
             return carModels.Remove(modelToDelete);
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await dealerDBContext.SaveChangesAsync()) > 0;
         }
 
         public CarBrand UpdateCarBrand(CarBrand editBrand)

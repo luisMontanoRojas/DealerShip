@@ -1,4 +1,5 @@
-﻿using DealerShip.Model;
+﻿using DealerShip.Data.Entities;
+using DealerShip.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,11 @@ namespace DealerShip.Data.Repository
 {
     public interface IDealerShipRepository
     {
+        Task<bool> SaveChangesAsync();
         //CarBrand
         IEnumerable<CarBrand> GetCarBrands();
         CarBrand GetCarBrand(int id, bool showModels = false);
-        CarBrand CreateCarBrand(CarBrand newBrand);
+        void CreateCarBrand(CarBrandEntity newBrand);
         bool DeleteCarBrand(int id);
         CarBrand UpdateCarBrand(CarBrand editBrand);
 

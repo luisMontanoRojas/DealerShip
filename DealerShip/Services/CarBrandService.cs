@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using DealerShip.Data.Entities;
 using DealerShip.Data.Repository;
 using DealerShip.Exceptions;
 using DealerShip.Model;
@@ -12,15 +14,22 @@ namespace DealerShip.Services
     {
         private HashSet<string> allowedOrderByValues;
         private IDealerShipRepository dealerShipRepository;
-        public CarBrandService(IDealerShipRepository dealerShipRepository)
+        private readonly IMapper mapper;
+        public CarBrandService(IDealerShipRepository dealerShipRepository, IMapper mapper)
         {
             this.dealerShipRepository = dealerShipRepository;
+            this.mapper = mapper;
             allowedOrderByValues = new HashSet<string>() { "id", "name", "nationality", "phono", "facebook", "ubication", "about", "oficialPage" };
         }
-        public CarBrand CreateCarBrand(CarBrand newBrand)
+        public async Task<CarBrand> CreateCarBrandAsync(CarBrand newBrand)
         {
-            newBrand.id = 0;
-            return dealerShipRepository.CreateCarBrand(newBrand);
+            var carBrandEntity = mapper.Map<CarBrandEntity>(newBrand);
+            dealerShipRepository.CreateCarBrand(carBrandEntity);
+            if(await dealerShipRepository.SaveChangesAsync())
+            {
+                return mapper.Map<CarBrand>(carBrandEntity);
+            }
+            throw new Exception("There was an error ");
         }
 
         public bool DeleteCarBrand(int id)

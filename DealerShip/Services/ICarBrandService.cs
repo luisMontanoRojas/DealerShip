@@ -10,7 +10,7 @@ namespace DealerShip.Services
     {
         IEnumerable<CarBrand> GetCarBrands(string orderBy);
         CarBrand GetCarBrand(int id, bool showModels);
-        CarBrand CreateCarBrand(CarBrand newBrand);
+        Task<CarBrand> CreateCarBrandAsync(CarBrand newBrand);
         bool DeleteCarBrand(int id);
         CarBrand UpdateCarBrand(int id, CarBrand editBrand);
     }
